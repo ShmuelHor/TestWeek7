@@ -6,13 +6,34 @@ import Layout from "./components/Layout/Layout";
 import Forbidden from "./pages/Forbidden/Forbidden";
 
 const router = createBrowserRouter([
- //FILL HERE
-]);
+    {
+      path: "/",
+      element:
+      <>
+      <Layout>
+        <Floor/>
+      </Layout>
+      <Reception/>
+      </> 
+    },
+    {
+        path:"/floor/:floor",
+        element:<PrivateRoute component={<Floor />} />
+            
+
+    },
+    {
+        path:"/forbidden",
+        element:<Forbidden/>
+    }
+    
+  ]);
 
 function App() {
   return (
     <div>
       <RouterProvider router={router} />
+      
     </div>
   );
 }

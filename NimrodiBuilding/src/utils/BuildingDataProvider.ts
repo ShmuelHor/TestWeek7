@@ -10,16 +10,23 @@ interface Floor {
 
 const useBuildingData = () => {
   const [buildingData, setBuildingData] = useState<Floor[]>([]);
-
+  useEffect(()=>{
+   const ImportBuildingData = async() =>{
+    const DataFromJSON:Floor[] = await import("../data/building.json") ;
+    setBuildingData(DataFromJSON);
+   }
+   ImportBuildingData()
+  },[])
   //FILL HERE LOGIC TO SET THE BUILDING DATA
 
 
-  const getFloorByIndex = (floorIndex:number): Floor |undefined =>
+  const getFloorByIndex = (floorIndex:number): Floor =>
   {
-    //FILL HERE
+
+    return buildingData[floorIndex];
   }
   const getListOfActivities = ():string[]=>{
-    //FILL HERE
+    return buildingData.map((p)=>(p.activity))
   }
   return {
     buildingData,

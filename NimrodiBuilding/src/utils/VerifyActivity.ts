@@ -1,4 +1,4 @@
-import roles from "../data/roles.json";
+import roels from "../data/roles.json";
 
 interface IuseActivityParams {
   activity: string;
@@ -7,7 +7,12 @@ interface IuseActivityParams {
 }
 
 const useIsVerified = ({ activity, role, activities }: IuseActivityParams) => {
-  //FILL HERE 3.7
+  const isRoleAboveActivity  = ()=>{
+    const indexActivity:number = activities.findIndex((a) =>a === activity)
+    const indexRoel:number = roels.findIndex((r)=>r === role)
+   return indexActivity <= indexRoel;
+  }
+  return {isRoleAboveActivity };
 };
 
 export default useIsVerified;
